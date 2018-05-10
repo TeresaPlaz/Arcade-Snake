@@ -1,7 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+let radius = 15;
 let unit = 30;
-let apple = new Apple(generateRandom(1, 29) * unit + 15, generateRandom(3, 29)  * unit + 15);
+let apple = new Apple(generateRandom(1, 29) * unit + 15, generateRandom(3, 29)  * unit + 15, radius);
 let score = 0;
 let snake = [{x:14 * unit, y: 20 * unit}];
 let direction = "up";
@@ -22,6 +23,7 @@ function draw() {
   apple.draw();
   snakeDraw();
   appleCollision();
+
 }
 
 document.onkeydown = function(e) {
@@ -54,34 +56,34 @@ function snakeDraw() {
 
   ctx.lineWidth = 1;
 
+  snakeDirection(direction);
+
   for (let i = 0; i < snake.length; i++) {
+    console.log(i);
 
     ctx.fillStyle = "rgb(" + Math.random()*256 + "," + Math.random()*256 + "," + Math.random()*256 + ")";
 
     ctx.fillRect(snake[i].x,snake[i].y, unit, unit);
-
+    console.log(snake, snake[i].x,snake[i].y, unit, unit, i);
     ctx.strokeStyle = "black";
-
     ctx.strokeRect(snake[i].x,snake[i].y, unit, unit);
   
   }
-
-  snakeDirection(direction);
 }
-
 
 
  
 
-function Apple(x,y) {
+function Apple(x, y, radius) {
   this.x = x;
   this.y = y;
+  this.radius = radius;
 
   this.draw = function() {
 
     ctx.fillStyle = "red";
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 15, 0, 360);
+    ctx.arc(this.x, this.y, radius, 0, 360);
     ctx.fill();
 
   };
@@ -162,8 +164,9 @@ function snakeDirection(direction) {
 
 function appleCollision() {
   
-  if (snake[0].x === apple.x && snake[0].y === apple.y) {
-    console.log("bam");
+  
+  if (snake[0].x === apple.x - radius &&  snake[0].y === apple.y - radius) {
+    score += 1;
   }
   else {
   snake.pop();
