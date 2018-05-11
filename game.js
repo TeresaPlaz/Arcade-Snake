@@ -15,7 +15,7 @@ function generateRandom(min, max) {
 
 function draw() {
 
-  ctx.clearRect( 0, 0, 900, 900);
+  ctx.clearRect( 0, 0, canvas.width, canvas.height);
 
 
   scoreDraw();
@@ -23,6 +23,7 @@ function draw() {
   apple.draw();
   snakeDraw();
   appleCollision();
+  snakeCollision();
 
 }
 
@@ -112,7 +113,7 @@ function snakeDirection(direction) {
     
       if (snake[0].x === canvas.width - unit) 
           {  
-           setTimeout(function(){ alert("GAME OVER"); }, 7);
+            alert("GAME OVER");
             document.location.reload();
           }
       else  
@@ -125,7 +126,7 @@ function snakeDirection(direction) {
     
         if (snake[0].y === canvas.height - unit) 
           {
-            setTimeout(function(){ alert("GAME OVER"); }, 7);
+            alert("GAME OVER");
             document.location.reload();
           }
         else 
@@ -138,7 +139,7 @@ function snakeDirection(direction) {
     
         if (snake[0].y === 90 ) 
           {
-            setTimeout(function(){ alert("GAME OVER"); }, 7);
+            alert("GAME OVER");
             document.location.reload();
           }
         else 
@@ -151,7 +152,7 @@ function snakeDirection(direction) {
     
         if (snake[0].x === 0 ) 
           {
-            setTimeout(function(){ alert("GAME OVER"); }, 7);
+            alert("GAME OVER");
             document.location.reload();
           }
         else 
@@ -167,9 +168,25 @@ function appleCollision() {
   
   if (snake[0].x === apple.x - radius &&  snake[0].y === apple.y - radius) {
     score += 1;
+
+    apple = new Apple(generateRandom(1, 29) * unit + 15, generateRandom(3, 29)  * unit + 15, radius);
   }
   else {
   snake.pop();
+  }
+
+}
+
+function snakeCollision() {
+
+  for (i = 2; i < snake.length; i++) {
+
+    if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+      
+      alert("GAME OVER");
+      document.location.reload();
+
+    }
   }
 
 }
