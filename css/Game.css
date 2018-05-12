@@ -42,17 +42,19 @@ body {
   position: absolute;
   color: white;
   text-align: center;
-  font-size: 500%;
   margin: 1% 0 0 21%;
   display: block;
+  background-image: url("../images/startScreenBackground.gif");
+  background-size: cover;
 }
 
 #startScreen h1 {
+  font-size: 600%;
   margin: 10% 3% 0 0;
 }
 
 #startScreen h3 {
-  font-size: 95%;
+  font-size: 200%;
   margin: 15% 3% 0 0;
   animation: blink2 1.5s linear infinite alternate;
 }
