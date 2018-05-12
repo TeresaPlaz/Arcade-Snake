@@ -10,8 +10,22 @@
 </head>
 <body>
 
-  <canvas id="canvas" width="900" height="900"></canvas>
+    <section id="startScreen">
+
+      <h1>SNAKE</h1>
+      <h3>PRESS ENTER TO START</h3>
+
+    </section>
+
+    <section id="gameOver">
+        <h1 class="title"><span>G</span><span>A</span><span>M</span><span>E</span> <span>O</span><span>V</span><span>E</span><span>R</span></h1>
+       <h3 id="restartButton">RESTART ?</h3>
+       <img src="./snakePicture.png" alt="snake picture">
+    </section>
+
+  <canvas id="canvas" width="1080" height="780"></canvas>
 
   <script src="./game.js"></script>
+  <script src="./screens.js"></script>
 </body>
 </html>

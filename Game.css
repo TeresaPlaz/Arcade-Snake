@@ -1,3 +1,76 @@
+body {
+  background-image: url("./screenPicture.png");
+  background-size: cover;
+}
+
+#gameOver {
+  font-family: monospace;
+  font-weight: bold;
+  width: 57%;
+  height: 77%;
+  position: absolute;
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-size: 250%;
+  margin: 1% 0 0 21%;
+  display: none;
+  border-radius: 15px;
+}
+
+#gameOver h1 {
+  margin: 10% 5% 0 0;
+}
+
+#gameOver h3 {
+  font-size: 95%;
+  margin-right: 5%;
+  animation: blink 1.5s linear infinite alternate;
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+  }
+
+#startScreen {
+  font-family: monospace;
+  font-weight: bold;
+  width: 57%;
+  height: 77%;
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-size: 500%;
+  margin: 1% 0 0 21%;
+  display: block;
+}
+
+#startScreen h1 {
+  margin: 10% 3% 0 0;
+}
+
+#startScreen h3 {
+  font-size: 95%;
+  margin: 15% 3% 0 0;
+  animation: blink2 1.5s linear infinite alternate;
+}
+
+@keyframes blink2 {
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+  }
+
+img {
+  width: 70%;
+  height: 50%;
+  margin: auto 5% 0 0;
+}
+
 canvas {
   background-color: black;
+  display: block;
+  margin: 3% 0 0 21.5%;
 }
