@@ -147,7 +147,7 @@ function Apple(x, y, radius) {
   this.draw = function() {
 
     if (score === 2) { ctx.fillStyle = "blue";} 
-    else if (score === 6) {ctx.fillStyle = "gold";}
+    else if (score === 6) {ctx.fillStyle = "#ccac00";}
     else{ctx.fillStyle = "red";}
     
     ctx.beginPath();

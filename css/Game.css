@@ -35,7 +35,7 @@ body {
   }
 
 #startScreen {
-  font-family: monospace;
+  font-family: "Lucida Console";
   font-weight: bold;
   width: 57%;
   height: 77%;
@@ -46,16 +46,17 @@ body {
   display: block;
   background-image: url("../images/startScreenBackground.gif");
   background-size: cover;
+  border-radius: 15px;
 }
 
-#startScreen h1 {
-  font-size: 600%;
-  margin: 10% 3% 0 0;
+#startScreen .snakePixelTitle {
+  width: 18%;
+  margin: 17% 0 0 4%;
 }
 
 #startScreen h3 {
   font-size: 200%;
-  margin: 15% 3% 0 0;
+  margin: 15% 0 0 0;
   animation: blink2 1.5s linear infinite alternate;
 }
 
@@ -65,7 +66,7 @@ body {
   100%{opacity: 1;}
   }
 
-img {
+.snakePictureGameOver {
   width: 70%;
   height: 50%;
   margin: auto 5% 0 0;
@@ -75,4 +76,76 @@ canvas {
   background-color: black;
   display: block;
   margin: 3% 0 0 21.5%;
+  border-radius: 15px;
+}
+
+@media (max-width: 1280px) {
+
+  body {
+    background-image: url("../images/screenPicture.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #startScreen {
+      font-family: "Lucida Console";
+      font-weight: bold;
+      margin: 0 0 0 20.8%;
+      width: 57%;
+      height: 65%;
+  }
+
+  #startScreen .snakePixelTitle {
+    width: 18%;
+    margin: 16% 0 0 6%;
+  }
+
+  canvas {
+    width: 57%;
+    height: 57%;
+    margin: 3% 0 0 21.5%;
+  }
+
+  #gameOver {
+    width: 57%;
+    height: 65%;
+    margin: 0 0 0 20.8%;
+  }
+
+}
+
+
+@media (max-width: 1440px) {
+
+  body {
+    background-image: url("../images/screenPicture.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #startScreen {
+      font-family: "Lucida Console";
+      font-weight: bold;
+      margin: 0 0 0 20.8%;
+      width: 57%;
+      height: 65%;
+  }
+
+  #startScreen .snakePixelTitle {
+    width: 18%;
+    margin: 16% 0 0 6%;
+  }
+
+  canvas {
+    width: 57%;
+    height: 57%;
+    margin: 3% 0 0 21.5%;
+  }
+
+  #gameOver {
+    width: 57%;
+    height: 65%;
+    margin: 0 0 0 20.8%;
+  }
+
 }
