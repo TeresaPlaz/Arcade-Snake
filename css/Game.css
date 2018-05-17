@@ -49,6 +49,11 @@ body {
   border-radius: 15px;
 }
 
+#startScreen h1 {
+  width: 50%;
+  height: 50%;
+}
+
 .snakePixelTitle {
   width: 18%;
   margin: 17% 0 0 4%;
