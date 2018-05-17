@@ -50,12 +50,12 @@ body {
 }
 
 #startScreen h1 {
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
 }
 
 .snakePixelTitle {
-  width: 10%;
+  width: 18%;
   margin: 17% 0 0 4%;
 }
 
