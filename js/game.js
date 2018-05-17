@@ -54,23 +54,25 @@ function arrowKeys() {
               case 37: if (direction !== "right") 
               {
                 direction = "left";
-              } else {}
+              }
                 break;
               case 38:  if (direction !== "down") 
               {
                 direction = "up";
-              } else {}
+              }
                 break;
               case 39:  if (direction !== "left") 
               {
                 direction = "right";
-              } else {}
+              }
                 break;
               case 40:  if (direction !== "up") 
               {
                 direction = "down";
-              } else {}
+              }
                 break;
+              case 83:    gameOn.play();
+              break;
             }
           };
 
@@ -184,6 +186,8 @@ function snakeDirection(direction) {
       if (snake[0].x === canvas.width - unit) 
           {  
             gameOver();
+            crashSound.play();
+            setTimeout( function() {gameOverSound.play();},500);
           }
       else  
           {
@@ -197,6 +201,8 @@ function snakeDirection(direction) {
         if (snake[0].y === canvas.height - unit) 
           {
             gameOver();
+            crashSound.play();
+            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -209,6 +215,8 @@ function snakeDirection(direction) {
         if (snake[0].y === 90) 
           {
             gameOver();
+            crashSound.play();
+            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -221,6 +229,8 @@ function snakeDirection(direction) {
         if (snake[0].x === 0) 
           {
             gameOver();
+            crashSound.play();
+            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -237,6 +247,8 @@ function appleCollision() {
   if (snake[0].x === apple.x - radius &&  snake[0].y === apple.y - radius) {
 
     score += 1;
+
+    eatSound.play();
 
     // generates a new apple object with random x and y values and a set radius
     apple = new Apple(generateRandom(1, 35) * unit + 15, generateRandom(3, 25)  * unit + 15, radius);
@@ -257,6 +269,8 @@ function snakeCollision() {
       
      snake = snake.slice(0,1);
       gameOver();
+      crashSound.play();
+      setTimeout( function() {gameOverSound.play();},900); 
     }
   }
 }
