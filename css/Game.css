@@ -3,11 +3,15 @@ body {
   background-size: cover;
 }
 
+img {
+  margin: 0;
+  padding: 0;
+}
 #gameOver {
   font-family: monospace;
   font-weight: bold;
   width: 57%;
-  height: 81%;
+  height: 77.5%;
   position: absolute;
   color: white;
   background-color: black;
@@ -35,7 +39,7 @@ body {
   }
 
 #startScreen {
-  font-family: "Lucida Console";
+  font-family: "Monospace";
   font-weight: bold;
   width: 57%;
   height: 77%;
@@ -49,13 +53,18 @@ body {
   border-radius: 15px;
 }
 
+#startScreen h1 {
+  margin: 0;
+  padding: 0;
+}
+
 #startScreen h4 {
   margin: 20% 80% 0 0;
 }
 
 .snakePixelTitle {
   width: 17%;
-  margin: 16% 0 0 4%;
+  margin: 18% 0 0 4%;
 }
 
 #startScreen h3 {
@@ -71,8 +80,8 @@ body {
   }
 
 .snakePictureGameOver {
-  width: 70%;
-  height: 50%;
+  width: 65%;
+  height: 45%;
   margin: auto 5% 0 0;
 }
 
@@ -92,8 +101,6 @@ canvas {
   }
 
   #startScreen {
-      font-family: "Lucida Console";
-      font-weight: bold;
       margin: 0 0 0 20.8%;
       width: 57%;
       height: 65%;
@@ -128,11 +135,9 @@ canvas {
   }
 
   #startScreen {
-      font-family: "Lucida Console";
-      font-weight: bold;
       margin: 0 0 0 20.8%;
       width: 57%;
-      height: 65%;
+      height: 65%; 
   }
 
   #startScreen .snakePixelTitle {

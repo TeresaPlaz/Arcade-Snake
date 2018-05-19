@@ -6,19 +6,25 @@ let crashSound = new Sound("./sounds/collision.mp3");
 
 function gameOver() {
 
+  snake = 0;
   gameOn.stop();
-
+  crashSound.play();
+  setTimeout( function () {gameOverSound.play();},1000);
   document.getElementById("gameOver").style.display = "block";
+  spanColors();
 
-  for (i = 0; i < spans.length; i++) {
 
-  spans[i].style.color = "rgb(" + Math.random()*256 + "," + Math.random()*256 + "," + Math.random()*256 + ")";
-}
+  function spanColors() {
+    for (i = 0; i < spans.length; i++) {
+
+      spans[i].style.color = "rgb(" + Math.random()*256 + "," + Math.random()*256 + "," + Math.random()*256 + ")";
+  }
+
+  setTimeout( function () {spanColors();},100);
 
   document.onkeydown = function() {
-  document.location.reload();};
-
- setTimeout(function () {gameOver();},100);
+    document.location.reload();};
+}
 }
 
 function startGame() {
@@ -44,7 +50,6 @@ function Sound(src) {
   this.sound.setAttribute("preload", "auto");
   this.sound.setAttribute("controls", "none");
   this.sound.style.display = "none";
-  this.sound.volume = 0.1;
   document.body.appendChild(this.sound);
   this.play = function(){
       this.sound.play();

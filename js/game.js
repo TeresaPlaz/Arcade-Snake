@@ -44,7 +44,7 @@ function draw() {
 
   // function to get the pressed arrow key and change the direction of the snake (see else)
 function arrowKeys() {
-    if (score < 3 || score > 6) {
+    if (score < 3 || score >= 9 && score < 12) {
 
       document.onkeydown = function(e) {
 
@@ -78,7 +78,7 @@ function arrowKeys() {
 
   }
 
-  else {
+  else if (score >= 3 && score <= 8) {
 
     // this inverts the direction from the pressed arrow keys after 3 eaten apples and switches back at 6 
       document.onkeydown = function(e) {
@@ -89,27 +89,59 @@ function arrowKeys() {
           case 37: if (direction !== "left") 
           {
             direction = "right";
-          } else {}
+          }
             break;
           case 38:  if (direction !== "up") 
           {
             direction = "down";
-          } else {}
+          }
             break;
           case 39:  if (direction !== "right") 
           {
             direction = "left";
-          } else {}
+          }
             break;
           case 40:  if (direction !== "down") 
           {
             direction = "up";
-          } else {}
+          }s
             break;
         }
       };
 
     }
+
+   else if ( score >= 12 && score <= 20) {
+
+    document.onkeydown = function(e) {
+
+      switch(e.keyCode) {
+    
+        // the if conditions avoid to go the opposite of the current direction
+        case 37: if (direction !== "up") 
+        {
+          direction = "down";
+        }
+          break;
+        case 38:  if (direction !== "right") 
+        {
+          direction = "left";
+        }
+          break;
+        case 39:  if (direction !== "down") 
+        {
+          direction = "up";
+        }
+          break;
+        case 40:  if (direction !== "left") 
+        {
+          direction = "right";
+        }
+          break;
+      }
+    };
+
+   } 
 }
 
   // function to draw the snake with a for loop going through the snake array of objects and getting the x and y coordinates
@@ -148,8 +180,8 @@ function Apple(x, y, radius) {
   // method function used to draw the apple
   this.draw = function() {
 
-    if (score === 2) { ctx.fillStyle = "blue";} 
-    else if (score === 6) {ctx.fillStyle = "#ccac00";}
+    if (score === 2 || score === 11 ) { ctx.fillStyle = "blue";} 
+    else if (score === 8 || score === 19) {ctx.fillStyle = "#ccac00";}
     else{ctx.fillStyle = "red";}
     
     ctx.beginPath();
@@ -186,8 +218,6 @@ function snakeDirection(direction) {
       if (snake[0].x === canvas.width - unit) 
           {  
             gameOver();
-            crashSound.play();
-            setTimeout( function() {gameOverSound.play();},500);
           }
       else  
           {
@@ -201,8 +231,6 @@ function snakeDirection(direction) {
         if (snake[0].y === canvas.height - unit) 
           {
             gameOver();
-            crashSound.play();
-            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -215,8 +243,6 @@ function snakeDirection(direction) {
         if (snake[0].y === 90) 
           {
             gameOver();
-            crashSound.play();
-            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -229,8 +255,6 @@ function snakeDirection(direction) {
         if (snake[0].x === 0) 
           {
             gameOver();
-            crashSound.play();
-            setTimeout( function() {gameOverSound.play();},500);
           }
         else 
           {
@@ -269,8 +293,6 @@ function snakeCollision() {
       
      snake = snake.slice(0,1);
       gameOver();
-      crashSound.play();
-      setTimeout( function() {gameOverSound.play();},900); 
     }
   }
 }
