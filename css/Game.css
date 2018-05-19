@@ -3,10 +3,6 @@ body {
   background-size: cover;
 }
 
-img {
-  margin: 0;
-  padding: 0;
-}
 #gameOver {
   font-family: monospace;
   font-weight: bold;
@@ -53,23 +49,13 @@ img {
   border-radius: 15px;
 }
 
-#startScreen h1 {
-  margin: 0;
-  padding: 0;
-}
-
 #startScreen h4 {
   margin: 20% 80% 0 0;
 }
 
-.snakePixelTitle {
-  width: 17%;
-  margin: 18% 0 0 4%;
-}
-
 #startScreen h3 {
   font-size: 200%;
-  margin: 15% 0 0 0;
+  margin: 40% 0 0 0;
   animation: blink2 1.5s linear infinite alternate;
 }
 
