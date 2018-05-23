@@ -3,7 +3,7 @@ let gameOn = new Sound("./sounds/background.mp3");
 let eatSound = new Sound("./sounds/eat.mp3");
 let gameOverSound = new Sound("./sounds/GameOver.mp3");
 let crashSound = new Sound("./sounds/collision.mp3");
-
+let fps = 110;
 function gameOver() {
 
   snake = 0;
@@ -38,9 +38,22 @@ function startGame() {
 
     if (e.keyCode === 13) {
       document.getElementById("startScreen").style.display = "none";    
-      
-      // The set interval calls the draw function every 0.1 seconds
-      setInterval (draw,100);}
+      document.getElementById("Legend").style.display = "block";
+
+      document.onkeydown = function() {
+
+        document.getElementById("Legend").style.display = "none";
+           // The set interval calls the draw function every 0.1 seconds
+        function timeOut() {
+            setTimeout(function () {
+            draw();
+            timeOut();
+          }, fps);
+        }
+        timeOut();
+      };
+     }
+     
   };
 }
 

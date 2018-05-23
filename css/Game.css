@@ -53,6 +53,27 @@ body {
   margin: 20% 80% 0 0;
 }
 
+#Legend {
+  font-family: monospace;
+  font-weight: bold;
+  width: 57%;
+  height: 77.5%;
+  position: absolute;
+  color: white;
+  background-color: black;
+  text-align: left;
+  font-size: 250%;
+  margin: 1% 0 0 21%;
+  display: none;
+  border-radius: 15px;
+}
+
+.circles {
+  margin: 13% 0 0 10%;
+  width: 30px;
+  height: 30px;
+}
+
 #startScreen h3 {
   font-size: 200%;
   margin: 40% 0 0 0;

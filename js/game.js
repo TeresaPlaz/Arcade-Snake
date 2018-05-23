@@ -38,8 +38,9 @@ function draw() {
   arrowKeys();
   snakeDraw();
   appleCollision();
-  snakeCollision();
-
+  snakeCollision(); 
+  slowMotion();
+      
 }
 
   // function to get the pressed arrow key and change the direction of the snake (see else)
@@ -53,22 +54,22 @@ function arrowKeys() {
               // the if conditions avoid to go the opposite of the current direction
               case 37: if (direction !== "right") 
               {
-                direction = "left";
+               setTimeout(function() {direction = "left";}, 80); 
               }
                 break;
               case 38:  if (direction !== "down") 
               {
-                direction = "up";
+                 setTimeout(function() {direction = "up";}, 80); 
               }
                 break;
               case 39:  if (direction !== "left") 
               {
-                direction = "right";
+                 setTimeout(function() {direction = "right";}, 80); 
               }
                 break;
               case 40:  if (direction !== "up") 
               {
-                direction = "down";
+                 setTimeout(function() {direction = "down";}, 80); 
               }
                 break;
               case 83:    gameOn.play();
@@ -88,23 +89,23 @@ function arrowKeys() {
           // the if conditions avoid to go the opposite of the current direction
           case 37: if (direction !== "left") 
           {
-            direction = "right";
+            setTimeout(function() {direction = "right";}, 80);
           }
             break;
           case 38:  if (direction !== "up") 
           {
-            direction = "down";
+             setTimeout(function() {direction = "down";}, 80);
           }
             break;
           case 39:  if (direction !== "right") 
           {
-            direction = "left";
+             setTimeout(function() {direction = "left";}, 80);
           }
             break;
           case 40:  if (direction !== "down") 
           {
-            direction = "up";
-          }s
+             setTimeout(function() {direction = "up";}, 80);
+          }
             break;
         }
       };
@@ -120,22 +121,22 @@ function arrowKeys() {
         // the if conditions avoid to go the opposite of the current direction
         case 37: if (direction !== "up") 
         {
-          direction = "down";
+          setTimeout(function() {direction = "down";}, 80); 
         }
           break;
         case 38:  if (direction !== "right") 
         {
-          direction = "left";
+          setTimeout(function() {direction = "left";}, 80); 
         }
           break;
         case 39:  if (direction !== "down") 
         {
-          direction = "up";
+         setTimeout(function() {direction = "up";}, 80);
         }
           break;
         case 40:  if (direction !== "left") 
         {
-          direction = "right";
+          setTimeout(function() {direction = "right";}, 80);
         }
           break;
       }
@@ -295,6 +296,18 @@ function snakeCollision() {
       gameOver();
     }
   }
+}
+
+function slowMotion() {
+  
+  document.onkeyup = function(e) {
+    if (score % 5 === 0) {
+    if (e.keyCode === 82) {
+        fps = 500;
+        setTimeout(function(){fps = 110;},10000);
+      }
+    }
+  };
 }
 
 // when the page is loaded this function calls the startGame function and this one show the first snake screen and after that calls the other functions and starts the game. 
