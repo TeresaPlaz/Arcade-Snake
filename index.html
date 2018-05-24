@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- CSS Link -->
   <link rel="stylesheet" type="text/css" href="./css/Game.css">
   
   <title>Game</title>
 </head>
 <body>
 
+    <!-- first show screen before game starts -->
     <section id="startScreen">
 
       <h3>PRESS ENTER TO START</h3>
-      <h4>PRESS "S"<br/>FOR SOUND</h4>
-      
 
     </section>
 
+    <!-- Legend explaining the different apples -->
     <section id="Legend">
 
       <img src="./images/redcircle.png" class="circles"> <span> = REGULAR APPLE</span> <br/>
@@ -26,15 +24,20 @@
 
     </section>
 
+    <!-- Game over screen, shown after collision -->
     <section id="gameOver">
         <h1 class="title"><span>G</span><span>A</span><span>M</span><span>E</span> <span>O</span><span>V</span><span>E</span><span>R</span></h1>
        <h3 id="restartButton">RESTART ?</h3>
        <img src="./images/snakePicture.png" alt="snake picture" class="snakePictureGameOver">
     </section>
 
+    <!-- Game canvas -->
   <canvas id="canvas" width="1080" height="780"></canvas>
 
+  <!-- Game javascript file -->
   <script src="./js/game.js"></script>
+
+  <!-- Extra screens javascript file -->
   <script src="./js/screens.js"></script>
 </body>
 </html>

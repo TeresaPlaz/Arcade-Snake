@@ -26,16 +26,15 @@ function generateRandom(min, max) {
   return (num === 0) ? generateRandom(min, max) : num;
 }
 
-  // draw function creates the animation by clearing the canvas and redrawing everything
+  // draw function creates the animation by clearing the canvas and redrawing everything while also keeping active the event listeners
 function draw() {
 
   ctx.clearRect( 0, 0, canvas.width, canvas.height);
 
-
+  arrowKeys();
   scoreDraw();
   scoreLine();
   apple.draw();
-  arrowKeys();
   snakeDraw();
   appleCollision();
   snakeCollision(); 
@@ -45,6 +44,8 @@ function draw() {
 
   // function to get the pressed arrow key and change the direction of the snake (see else)
 function arrowKeys() {
+
+  // before the score hits 3 and after it goes over 9, the keyboard has the normal functions
     if (score < 3 || score >= 9 && score < 12) {
 
       document.onkeydown = function(e) {
@@ -54,6 +55,8 @@ function arrowKeys() {
               // the if conditions avoid to go the opposite of the current direction
               case 37: if (direction !== "right") 
               {
+
+                // setTimeout is used to avoid going the opposite direction if you hit the keys too fast
                setTimeout(function() {direction = "left";}, 80); 
               }
                 break;
@@ -79,6 +82,7 @@ function arrowKeys() {
 
   }
 
+  // when the score goes over 3 and before it hits 9, the arrow keys are inverted
   else if (score >= 3 && score <= 8) {
 
     // this inverts the direction from the pressed arrow keys after 3 eaten apples and switches back at 6 
@@ -86,7 +90,6 @@ function arrowKeys() {
 
         switch(e.keyCode) {
       
-          // the if conditions avoid to go the opposite of the current direction
           case 37: if (direction !== "left") 
           {
             setTimeout(function() {direction = "right";}, 80);
@@ -112,13 +115,13 @@ function arrowKeys() {
 
     }
 
+    // to increase difficulty, when the score goes over 12 and before it hits 20, the keys start turning in a clockwise manner
    else if ( score >= 12 && score <= 20) {
 
     document.onkeydown = function(e) {
 
       switch(e.keyCode) {
     
-        // the if conditions avoid to go the opposite of the current direction
         case 37: if (direction !== "up") 
         {
           setTimeout(function() {direction = "down";}, 80); 
@@ -172,7 +175,7 @@ function snakeDraw() {
 
 
  
-// this constructor function creates a new apple taking the x and y coordinates and the radius also
+// this constructor function creates a new apple taking the x and y coordinates and the radius
 function Apple(x, y, radius) {
   this.x = x;
   this.y = y;
@@ -181,10 +184,14 @@ function Apple(x, y, radius) {
   // method function used to draw the apple
   this.draw = function() {
 
+    // conditions used to show when the keys change functionality
+
+    // blue changes the keys, gold gets them back to normal and red doesn't change anything
     if (score === 2 || score === 11 ) { ctx.fillStyle = "blue";} 
     else if (score === 8 || score === 19) {ctx.fillStyle = "#ccac00";}
     else{ctx.fillStyle = "red";}
     
+    // apple draw
     ctx.beginPath();
     ctx.arc(this.x, this.y, radius, 0, 360);
     ctx.fill();
@@ -216,6 +223,7 @@ function snakeDirection(direction) {
 
     case "right": 
     
+    // collision detection with right border
       if (snake[0].x === canvas.width - unit) 
           {  
             gameOver();
@@ -229,6 +237,7 @@ function snakeDirection(direction) {
 
     case "down": 
     
+     // collision detection with bottom border
         if (snake[0].y === canvas.height - unit) 
           {
             gameOver();
@@ -240,7 +249,8 @@ function snakeDirection(direction) {
     break;
 
     case "up": 
-    
+          
+          // collision detection with upper border, which in this case is the score line, not the canvas border
         if (snake[0].y === 90) 
           {
             gameOver();
@@ -253,6 +263,7 @@ function snakeDirection(direction) {
 
     case "left": 
     
+          // collision detection with left border
         if (snake[0].x === 0) 
           {
             gameOver();
@@ -273,6 +284,7 @@ function appleCollision() {
 
     score += 1;
 
+    // apple eaten sound
     eatSound.play();
 
     // generates a new apple object with random x and y values and a set radius
@@ -298,19 +310,29 @@ function snakeCollision() {
   }
 }
 
+
+  // function used to make a slow motion power. It takes the variable used to set the frames per second of the animation and changes it to an upper       value that makes the game go slower for 10 seconds. Works with the "R" key and only when score is a 5 multiple.
 function slowMotion() {
   
   document.onkeyup = function(e) {
+
+    // condition to check if score is a multiple of 5
     if (score % 5 === 0) {
+
+    // checks if player hits the "R" key
     if (e.keyCode === 82) {
+
+        // set frames per second to 500 which makes the game almost 5 times slower
         fps = 500;
-        setTimeout(function(){fps = 110;},10000);
+
+        // after 10 seconds sets the speed back to the original
+        setTimeout(function(){fps = 115;},10000);
       }
     }
   };
 }
 
-// when the page is loaded this function calls the startGame function and this one show the first snake screen and after that calls the other functions and starts the game. 
+// when the page is loaded this function calls the startGame function and this one shows the first screen and after that calls the other functions and starts the game. 
 window.onload = function() {
 
   startGame();

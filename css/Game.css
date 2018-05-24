@@ -49,10 +49,6 @@ body {
   border-radius: 15px;
 }
 
-#startScreen h4 {
-  margin: 20% 80% 0 0;
-}
-
 #Legend {
   font-family: monospace;
   font-weight: bold;
@@ -69,7 +65,7 @@ body {
 }
 
 .circles {
-  margin: 13% 0 0 10%;
+  margin: 13% 0 0 8%;
   width: 30px;
   height: 30px;
 }
