@@ -114,6 +114,12 @@ canvas {
     margin: 13% 0 0 0;
   }
 
+  #Legend {
+    margin: 0 0 0 20.8%;
+    width: 57%;
+    height: 65%;
+  }
+
   canvas {
     width: 57%;
     height: 57%;
@@ -122,7 +128,7 @@ canvas {
 
   #gameOver {
     width: 57%;
-    height: 65%;
+    height: 67%;
     margin: 0 0 0 20.8%;
   }
 
@@ -154,9 +160,15 @@ canvas {
     margin: 3% 0 0 21.5%;
   }
 
+  #Legend {
+    margin: 0 0 0 20.8%;
+    width: 57%;
+    height: 65%; 
+  }
+
   #gameOver {
     width: 57%;
-    height: 65%;
+    height: 67%;
     margin: 0 0 0 20.8%;
   }
 
