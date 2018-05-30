@@ -280,6 +280,8 @@ function appleCollision() {
 
     // generates a new apple object with random x and y values and a set radius
     apple = new Apple(generateRandom(1, 35) * unit + 15, generateRandom(3, 25)  * unit + 15, radius);
+
+    if (score % 5 === 0) {rPowerSound.play();}
   }
   else {
   // predefined function that eliminates the last element of the snake array

@@ -7,6 +7,7 @@ let gameOn = new Sound("./sounds/background.mp3");
 let eatSound = new Sound("./sounds/eat.mp3");
 let gameOverSound = new Sound("./sounds/GameOver.mp3");
 let crashSound = new Sound("./sounds/collision.mp3");
+let rPowerSound = new Sound("./sounds/power.mp3");
 
 // initial game speed
 let fps = 115;
