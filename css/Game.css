@@ -1,6 +1,7 @@
 body {
   background-image: url("../images/screenPicture.png");
   background-size: cover;
+  margin: 0;
 }
 
 #gameOver {
@@ -13,17 +14,17 @@ body {
   background-color: black;
   text-align: center;
   font-size: 250%;
-  margin: 1% 0 0 21%;
+  margin: 1% 0 0 21.4%;
   display: none;
   border-radius: 15px;
 }
 
 #gameOver h1 {
-  margin: 10% 5% 0 0;
+  margin: 10% 5% 3% 0;
 }
 
 #gameOver h3 {
-  font-size: 95%;
+  font-size: 100%;
   margin-right: 5%;
   animation: blink 1.5s linear infinite alternate;
 }
@@ -38,15 +39,17 @@ body {
   font-family: "Monospace";
   font-weight: bold;
   width: 57%;
-  height: 77%;
+  height: 77.5%;
   position: absolute;
   color: white;
+  background-color: black;
   text-align: center;
-  margin: 1% 0 0 21%;
+  margin: 1% 0 0 21.4%;
   display: block;
+  background-position: 5%;
   background-image: url("../images/startScreenBackground.gif");
   background-size: cover;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 #Legend {
@@ -58,16 +61,53 @@ body {
   color: white;
   background-color: black;
   text-align: left;
-  font-size: 250%;
-  margin: 1% 0 0 21%;
+  font-size: 200%;
+  margin: 1% 0 0 21.4%;
   display: none;
   border-radius: 15px;
 }
 
+.toggleSoundText {
+  margin: 8% 14% 0 0;
+  text-align: center;
+  float: right;
+}
+
+.rKeyPower {
+  margin: 0 9% 0 0;
+  text-align: center;
+  float: right;
+}
+
 .circles {
-  margin: 13% 0 0 8%;
+  margin: 8% 0 0 4%;
   width: 30px;
   height: 30px;
+}
+
+.arrowKeys {
+  margin: 10% 0 0 18%;
+  float: left;
+}
+
+.changesText {
+  margin: 9% 0 0 5%;
+  text-align: center;
+  line-height: 200%;
+  float: left;
+  display:block;
+}
+
+.score {
+  color: white;
+  font-size: 110%;
+  margin: 0 5% 0 0;
+}
+
+.instructions {
+  margin: 4% 0 0 37%;
+  text-decoration: underline;
+  font-size: 150%;
 }
 
 #startScreen h3 {
@@ -91,7 +131,7 @@ body {
 canvas {
   background-color: black;
   display: block;
-  margin: 3% 0 0 21.5%;
+  margin: 3% 0 0 21.8%;
   border-radius: 15px;
 }
 

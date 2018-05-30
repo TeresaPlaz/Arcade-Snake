@@ -31,24 +31,24 @@ function draw() {
 
   ctx.clearRect( 0, 0, canvas.width, canvas.height);
 
-  arrowKeys();
   scoreDraw();
   scoreLine();
   apple.draw();
   snakeDraw();
   appleCollision();
-  snakeCollision(); 
-  slowMotion();
-      
+  snakeCollision();
+  document.onkeydown = function(e) { 
+  arrowKeys(e);
+  slowMotion(e); 
+  togglePlay(e);
+  };
 }
 
   // function to get the pressed arrow key and change the direction of the snake (see else)
-function arrowKeys() {
+function arrowKeys(e) {
 
   // before the score hits 3 and after it goes over 9, the keyboard has the normal functions
     if (score < 3 || score >= 9 && score < 12) {
-
-      document.onkeydown = function(e) {
 
             switch(e.keyCode) {
 
@@ -78,15 +78,12 @@ function arrowKeys() {
               case 83:    gameOn.play();
               break;
             }
-          };
-
   }
 
   // when the score goes over 3 and before it hits 9, the arrow keys are inverted
   else if (score >= 3 && score <= 8) {
 
     // this inverts the direction from the pressed arrow keys after 3 eaten apples and switches back at 6 
-      document.onkeydown = function(e) {
 
         switch(e.keyCode) {
       
@@ -111,14 +108,10 @@ function arrowKeys() {
           }
             break;
         }
-      };
-
     }
 
     // to increase difficulty, when the score goes over 12 and before it hits 20, the keys start turning in a clockwise manner
    else if ( score >= 12 && score <= 20) {
-
-    document.onkeydown = function(e) {
 
       switch(e.keyCode) {
     
@@ -143,8 +136,6 @@ function arrowKeys() {
         }
           break;
       }
-    };
-
    } 
 }
 
@@ -202,8 +193,8 @@ function Apple(x, y, radius) {
 // function used to draw the Score text
 function scoreDraw() {
   ctx.fillStyle = "white";
-  ctx.font = "250% monospace";
-  ctx.fillText("Score " + score,unit,2*unit);
+  ctx.font = "bold 250% monospace";
+  ctx.fillText("SCORE " + score,unit,2*unit);
 }
 
 // function used to draw the green line below the score
@@ -312,9 +303,7 @@ function snakeCollision() {
 
 
   // function used to make a slow motion power. It takes the variable used to set the frames per second of the animation and changes it to an upper       value that makes the game go slower for 10 seconds. Works with the "R" key and only when score is a 5 multiple.
-function slowMotion() {
-  
-  document.onkeyup = function(e) {
+function slowMotion(e) {
 
     // condition to check if score is a multiple of 5
     if (score % 5 === 0) {
@@ -329,7 +318,20 @@ function slowMotion() {
         setTimeout(function(){fps = 115;},10000);
       }
     }
-  };
+}
+
+function togglePlay(e) {
+    if (e.keyCode === 83) {
+        if (isPlaying) {
+          gameOn.stop();
+          isPlaying = false;
+          } 
+        else {
+          gameOn.play();
+          gameOn.sound.loop = true;
+          isPlaying = true;
+              }
+      }
 }
 
 // when the page is loaded this function calls the startGame function and this one shows the first screen and after that calls the other functions and starts the game. 

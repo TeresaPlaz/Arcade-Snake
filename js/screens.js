@@ -11,6 +11,8 @@ let crashSound = new Sound("./sounds/collision.mp3");
 // initial game speed
 let fps = 115;
 
+let isPlaying = true;
+
 // this function activates the game over sounds, set the display to block so the div shows on the screen, activates the spanColors function and takes any key input to refresh the page
 function gameOver() {
 
@@ -30,6 +32,8 @@ function gameOver() {
   document.getElementById("gameOver").style.display = "block";
 
   spanColors();
+
+  document.querySelector(".score").innerHTML += score;
 
 
   // this functions loops over the "GAME OVER" letters using the saved HTML collection set before and switching their colors
