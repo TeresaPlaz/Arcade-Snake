@@ -1,14 +1,24 @@
 const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext( "2d" );
+const startScreen = document.getElementById( "startScreen" );
+
+//Setting the canvas width and height to make it responsive
+canvas.width = Math.floor(startScreen.offsetWidth);
+canvas.height = Math.floor( startScreen.offsetHeight );
+
+//Setting max point for apples to show in canvas
+let appleMaxWidthPoint = Math.floor(canvas.width / 30);
+let appleMaxHeightPoint = Math.floor( canvas.height / 30 );
 
 // set apple radius
-let radius = 15;
+const radius = 15;
 
 // set amount of pixels for positioning
-let unit = 30;
+const unit = 30;
+
 
 // first apple
-let apple = new Apple(generateRandom(1, 35) * unit + 15, generateRandom(3, 25)  * unit + 15, radius);
+let apple = new Apple(generateRandom(1, appleMaxWidthPoint-1) * unit + radius, generateRandom(3, appleMaxHeightPoint- 1)  * unit + radius, radius);
 
 // initial score
 let score = 0;
@@ -215,7 +225,7 @@ function snakeDirection(direction) {
     case "right": 
     
     // collision detection with right border
-      if (snake[0].x === canvas.width - unit) 
+      if (snake[0].x >= canvas.width - unit*1.5) 
           {  
             gameOver();
           }
@@ -227,9 +237,9 @@ function snakeDirection(direction) {
     break;
 
     case "down": 
-    
+
      // collision detection with bottom border
-        if (snake[0].y === canvas.height - unit) 
+        if (snake[0].y >= canvas.height - unit - 13) 
           {
             gameOver();
           }
@@ -279,7 +289,7 @@ function appleCollision() {
     eatSound.play();
 
     // generates a new apple object with random x and y values and a set radius
-    apple = new Apple(generateRandom(1, 35) * unit + 15, generateRandom(3, 25)  * unit + 15, radius);
+    apple = new Apple(generateRandom(1, appleMaxWidthPoint -1) * unit + radius, generateRandom(3, appleMaxHeightPoint -1)  * unit + radius, radius);
 
     if (score % 5 === 0) {rPowerSound.play();}
   }

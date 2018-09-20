@@ -38,13 +38,13 @@ body {
 #startScreen {
   font-family: "Monospace";
   font-weight: bold;
-  width: 57%;
-  height: 77.5%;
+  width: 56.6%;
+  height: 80%;
   position: absolute;
   color: white;
   background-color: black;
   text-align: center;
-  margin: 1% 0 0 21.4%;
+  margin: 1% 0 0 21.6%;
   display: block;
   background-position: 5%;
   background-image: url("../images/startScreenBackground.gif");
@@ -81,17 +81,17 @@ body {
 
 .circles {
   margin: 8% 0 0 4%;
-  width: 30px;
-  height: 30px;
+  width: 3%;
+  height: 4%;
 }
 
 .arrowKeys {
-  margin: 10% 0 0 18%;
+  margin: 2% 0 0 10%;
   float: left;
 }
 
 .changesText {
-  margin: 9% 0 0 5%;
+  margin: 2% 0 0 12%;
   text-align: center;
   line-height: 200%;
   float: left;
@@ -107,7 +107,9 @@ body {
 .instructions {
   margin: 4% 0 0 37%;
   text-decoration: underline;
-  font-size: 150%;
+  font-size: 140%;
+  width: 57%;
+  height: 57%;
 }
 
 #startScreen h3 {
@@ -161,8 +163,6 @@ canvas {
   }
 
   canvas {
-    width: 57%;
-    height: 57%;
     margin: 3% 0 0 21.5%;
   }
 
@@ -195,8 +195,6 @@ canvas {
   }
 
   canvas {
-    width: 57%;
-    height: 57%;
     margin: 3% 0 0 21.5%;
   }
 

@@ -54,7 +54,8 @@ function gameOver() {
 }
 
 // this function takes a key input and if the player hits the "enter" key, the first screen goes hidden and the legend screen shows. It also activates the game background music, makes it a loop music, takes a key input again to hide the legend screen and makes a function to animate the game calling itself over and over
-function startGame() {
+function startGame ()
+{
 
  document.onkeydown = function(e) {
     
@@ -63,7 +64,8 @@ function startGame() {
     if (e.keyCode === 13) {
 
       // hides the starting screen
-      document.getElementById("startScreen").style.display = "none";    
+
+      startScreen.style.display = "none";  
 
       // shows the legend screen
       document.getElementById("Legend").style.display = "block";
