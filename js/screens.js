@@ -68,7 +68,7 @@ function startGame ()
       startScreen.style.display = "none";  
 
       // shows the legend screen
-      document.getElementById("Legend").style.display = "block";
+      document.getElementById("legend").style.display = "block";
 
       // activates game background music
       gameOn.play();
@@ -80,7 +80,7 @@ function startGame ()
       document.onkeydown = function() {
 
         // hides legend screen
-        document.getElementById("Legend").style.display = "none";
+        document.getElementById("legend").style.display = "none";
 
            // The setTimeout calls the draw function every 0.115 seconds
         function timeOut() {

@@ -3,31 +3,34 @@ const ctx = canvas.getContext( "2d" );
 const startScreen = document.getElementById( "startScreen" );
 
 //Setting the canvas width and height to make it responsive
-canvas.width = Math.floor(startScreen.offsetWidth);
-canvas.height = Math.floor( startScreen.offsetHeight );
+canvas.width = startScreen.offsetWidth;
+canvas.height = startScreen.offsetHeight;
+console.log(startScreen.offsetWidth, startScreen.offsetHeight)
 
 //Setting max point for apples to show in canvas
-let appleMaxWidthPoint = Math.floor(canvas.width / 30);
-let appleMaxHeightPoint = Math.floor( canvas.height / 30 );
+let appleMaxWidthPoint = canvas.width <= 560 ? Math.floor(canvas.width / 20) : Math.floor(canvas.width / 30);
+let appleMaxHeightPoint = canvas.width <= 560 ? Math.floor(canvas.height / 20) : Math.floor(canvas.height / 30);
 
 // set apple radius
-const radius = 15;
+const radius = canvas.width <= 560 ? 10 : 15;
 
 // set amount of pixels for positioning
-const unit = 30;
+const unit = canvas.width <= 560 ? 20 : 30;
 
 
 // first apple
 let apple = new Apple(generateRandom(1, appleMaxWidthPoint-1) * unit + radius, generateRandom(3, appleMaxHeightPoint- 1)  * unit + radius, radius);
+if (apple.y < 90) apple.y = 90;
 
 // initial score
 let score = 0;
 
 //starting position of the snake
-let snake = [{x:14 * unit, y: 20 * unit}];
+let snake = [{x:14 * unit, y: 12 * unit}];
 
 //initial direction of the snake
 let direction = "up";
+const upperCollision = canvas.width <= 560 ? 80 : 90;
 
 
   // generates a random number except zero to avoid issues with the canvas borders
@@ -173,8 +176,6 @@ function snakeDraw() {
   
   }
 }
-
-
  
 // this constructor function creates a new apple taking the x and y coordinates and the radius
 function Apple(x, y, radius) {
@@ -186,7 +187,6 @@ function Apple(x, y, radius) {
   this.draw = function() {
 
     // conditions used to show when the keys change functionality
-
     // blue changes the keys, gold gets them back to normal and red doesn't change anything
     if (score === 2 || score === 11 ) { ctx.fillStyle = "blue";} 
     else if (score === 8 || score === 19) {ctx.fillStyle = "#ccac00";}
@@ -203,17 +203,19 @@ function Apple(x, y, radius) {
 // function used to draw the Score text
 function scoreDraw() {
   ctx.fillStyle = "white";
-  ctx.font = "bold 250% monospace";
-  ctx.fillText("SCORE " + score,unit,2*unit);
+  ctx.font = canvas.width <= 560 ? "bold 1.5rem monospace" : "bold 2rem monospace";
+  ctx.fillText("SCORE " + score,unit, 2*unit);
 }
 
 // function used to draw the green line below the score
 function scoreLine() {
+  const moveTo = canvas.width <= 560 ? 77 : 87;
+  const lineTo = canvas.width <= 560 ? 80 : 90;
   ctx.strokeStyle = "#" + 458107;
   ctx.lineWidth = 3;
   ctx.beginPath();
-  ctx.moveTo(0, 87);
-  ctx.lineTo(canvas.width, 90);
+  ctx.moveTo(0, moveTo);
+  ctx.lineTo(canvas.width, lineTo);
   ctx.stroke();
 }
 
@@ -225,7 +227,7 @@ function snakeDirection(direction) {
     case "right": 
     
     // collision detection with right border
-      if (snake[0].x >= canvas.width - unit*1.5) 
+      if (snake[0].x >= canvas.width - unit) 
           {  
             gameOver();
           }
@@ -239,7 +241,7 @@ function snakeDirection(direction) {
     case "down": 
 
      // collision detection with bottom border
-        if (snake[0].y >= canvas.height - unit - 13) 
+        if (snake[0].y >= canvas.height - unit)
           {
             gameOver();
           }
@@ -252,7 +254,7 @@ function snakeDirection(direction) {
     case "up": 
           
           // collision detection with upper border, which in this case is the score line, not the canvas border
-        if (snake[0].y === 90) 
+        if (snake[0].y === upperCollision) 
           {
             gameOver();
           }
@@ -289,7 +291,8 @@ function appleCollision() {
     eatSound.play();
 
     // generates a new apple object with random x and y values and a set radius
-    apple = new Apple(generateRandom(1, appleMaxWidthPoint -1) * unit + radius, generateRandom(3, appleMaxHeightPoint -1)  * unit + radius, radius);
+    apple = new Apple(generateRandom(1, appleMaxWidthPoint - 1) * unit + radius, generateRandom(3, appleMaxHeightPoint - 1)  * unit + radius, radius);
+    if (apple.y < 90) apple.y = 90;
 
     if (score % 5 === 0) {rPowerSound.play();}
   }
@@ -312,7 +315,6 @@ function snakeCollision() {
     }
   }
 }
-
 
   // function used to make a slow motion power. It takes the variable used to set the frames per second of the animation and changes it to an upper       value that makes the game go slower for 10 seconds. Works with the "R" key and only when score is a 5 multiple.
 function slowMotion(e) {
@@ -348,6 +350,5 @@ function togglePlay(e) {
 
 // when the page is loaded this function calls the startGame function and this one shows the first screen and after that calls the other functions and starts the game. 
 window.onload = function() {
-
   startGame();
 };
